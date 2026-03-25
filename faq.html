@@ -10,97 +10,99 @@
 		<!-- MARK: STYLING -->
 		<style>
 
-			/* BODY */
+			/* NESTING | Baseline 2023 Newly available across major browsers */
+
+			/* BODY | Baseline Widely available across major browsers*/
 			body {
+				/* Baseline Widely available across major browsers */
 				display: flex;
 				flex-direction: column;
-				gap: 1rem;
 			}
+			
 
 			/* DETAILS */
 			details {
+				--details-color:var(--purple);
+				background-color: var(--details-color);
+				margin-block: 1em;
+				width: fit-content;
 				border-radius: 10px;
+				/* Baseline Widely available across major browsers */
 
+				&:nth-of-type(2) {
+					--details-color:var(--green);
+				}
+
+				&:nth-of-type(3) {
+					--details-color:var(--yellow);
+				}
+			}
 				/* CONTENT IN DE DETAILS */
 				summary {
 					display: flex;
 					gap: 1rem;
 					align-items: center;
 					cursor: pointer;
-					width: 300px;
-					outline: 3px solid black;
-					border-radius: 5px;
+					width: fit-content;
+					border: 3px solid black;
+
+					/* Baseline Widely available across major browsers */
+					border-radius: 10px;
 					list-style-type: none;
-					margin-block: .5rem;
 					padding: 1rem;
+
+					/* WANNEER DETAILS IS GEOPEND */
+					details[open] & {
+						background-color: var(--details-color);
+						border-color: transparent;
+						border-radius: 10px 10px 0 0;
+					}
 					
-					/* Psuedo voor de text */
+					/* Psuedo voor de text | Baseline Widely available across major browsers */
 					&::before {
 						content: url(assets/plus.svg);
 						display: inline-block;
 						transition: transform .2s ease-in-out;
 					}
-				}
-				/* TEXT IN SUMMARY */
-				p {
-					padding-inline: 1rem;
-				}
-			}
 
-			/* WANNEER DETAILS IS GEOPEND */
-			details[open]{
-				transform-origin: center;
-
-				/* Summary wanneer het geopened is */
-				summary{
-					outline: none;
-
-					&::before{
+					details[open] &::before {
 						transform: rotate(45deg);
 					}
 				}
-			}
 
-			details[open] summary::before{
-                transform:  rotate(45deg);
-            }   
+				@supports selector(::details-content) {
+					details {
+						background-color: transparent;
+					}
+				}
 
-			/* Wanneer het eerste detail is geopend */
-			.d1:open {
-				background-color: var(--purple);
-			}
-			
-			/* Wanneer het tweede detail is geopend */
-			.d2:open {
-				background-color: var(--green);
-			}
-
-			/* Wanneer het derde detail is geopend */
-			.d3:open {
-				background-color: var(--yellow);
-			}
+				details[open]::details-content {
+					padding: 1em;
+					background-color: var(--details-color);
+					border-radius: 0 10px 10px 10px;
+				}
 		</style>
 	</head>
 
 	<body>
 		<h1>Veelgestelde vragen</h1>
 
-		<details class="d1">
-			<summary class="s1">Wat is frontend development?</summary>
+		<details>
+			<summary>Wat is frontend development?</summary>
 			<p>
 				Een frontend developer ontwerpt en bouwt websites in HTML, CSS en JavaScript. Deze frontend talen leer je bij ons, je hebt dus geen voorkennis nodig.
 			</p>
 		</details>
 
-		<details class="d2">
-			<summary class="s2">Moet ik al kunnen coderen?</summary>
+		<details>
+			<summary>Moet ik al kunnen coderen?</summary>
 			<p>
 				Nee, je hebt helemaal geen voorkennis nodig om te beginnen aan deze opleiding, we kunnen je alles leren! Als je wel al voorkennis hebt, is dat alleen maar goed, dan kunnen we je helpen je skills te verbeteren en te verdiepen in de stof.
 			</p>
 		</details>
 
-		<details class="d3">
-			<summary class="s3">Wat is een Associate Degree?</summary>
+		<details>
+			<summary>Wat is een Associate Degree?</summary>
 			<p>
 				Een Associate degree-opleiding is een tweejarige hbo-opleiding op niveau 5. Een Ad slaat een brug tussen het mbo-4 (niveau 4) en een hbo-bachelor (niveau 6). Met een Associate degree kies je voor een praktijkgerichte hbo-opleiding; je wordt opgeleid voor een beroep dat aansluit bij de praktijk. In dit geval word je opgeleid tot ‘frontend designer/developer' of kortweg ‘frontender’. Frontenders ontwerpen en maken interactieve, toegankelijke toepassingen voor het web. Frontenders werken binnen het gebied van software development, interactieontwerp en digitaal visueel ontwerp.
 				Na afronding van deze tweejarige hbo-opleiding, krijg je een wettelijk erkend hbo-diploma met de graad Associate degree. Met dit Ad-diploma kun je direct aan de slag in het werkveld of doorstromen naar de bacheloropleiding Communication and Multimedia Design (CMD).

@@ -11,6 +11,8 @@ Gebruik het <style> element in het bestand van het component, waar ook wat hints
 
 body {
 	/* Je kunt de volgende FDND kleuren gebruiken in je code */
+
+	/*CUSTOM PROPERTIES | Baseline Widely available across major browsers */
 	--purple: #A675F5;
 	--blue: #050542;
 	--blue-50: rgba(5, 5, 66, 0.5);
