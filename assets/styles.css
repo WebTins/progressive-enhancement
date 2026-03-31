@@ -77,6 +77,8 @@ input {
 
 	aspect-ratio: 2/1;
 
+	cursor: pointer;
+
 	/* background-color: var(--off-color); */
 	background-image: 
 	linear-gradient(
