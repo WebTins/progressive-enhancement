@@ -5,9 +5,77 @@
 		<meta name="viewport" content="width=device-width">
 		<title>Switch control / Progressive Enhancement / FDND</title>
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
+		<!-- <link href="assets/styles.css" rel="stylesheet"> -->
 		<style>
 			/* Schrijf hier gewoon je CSS voor dit component */
+
+		input {
+			@supports (appearance: none) {
+
+			--width: 8em;
+			--height: 3em;
+			--radius: 25px;
+			--padding: .1em;
+
+			--off-color: silver;
+			--on-color: #06b806;
+
+			appearance: none;
+
+			width: var(--width);
+			height: var(--height);
+			padding: var(--padding);
+
+			aspect-ratio: 2/1;
+
+			cursor: pointer;
+
+			/* background-color: var(--off-color); */
+			background-image: 
+			linear-gradient(
+				to right, 
+				var(--on-color) 50%, 
+				var(--off-color) 0
+				);
+
+			background-size: 200% 100%;
+			background-position: right;
+			border-radius: 25px;
+
+			@media (prefers-reduced-motion: no-preference) {
+				transition: .5s;
+			}
+
+
+
+			&:checked {
+				background-color: var(--on-color);
+				background-position: left;
+			}
+
+			/* Thumb */
+			&::before {
+				display: grid;
+				place-items: center;
+				content: "uit";
+
+				height: 100%;
+				aspect-ratio: 1;
+
+				background-color: white;
+
+				border-radius: calc(var(--radius) - var(--padding));
+				transition: inherit;
+
+			}
+
+			&:checked::before {
+				content: "aan";
+				translate: calc(var(--width) - var(--height));
+				rotate: 1turn;
+			}
+		}
+			}
 
 			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
 
